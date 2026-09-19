@@ -1,0 +1,57 @@
+abstract class Animal {
+    abstract void eat();
+
+    void sleep() {
+        System.out.println("Animal sleeps");
+    }
+}
+
+interface Pet {
+    void play();
+}
+
+class Dog extends Animal implements Pet {
+
+    void eat() {
+        System.out.println("Dog eats");
+    }
+
+    public void play() {
+        System.out.println("Dog plays");
+    }
+}
+
+class Cat extends Animal implements Pet {
+
+    void eat() {
+        System.out.println("Cat eats");
+    }
+
+    public void play() {
+        System.out.println("Cat plays");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Animal a1 = new Dog();
+        Animal a2 = new Cat();
+
+        a1.eat();
+        a1.sleep();
+
+        System.out.println();
+
+        a2.eat();
+        a2.sleep();
+
+        System.out.println();
+
+        Pet p1 = new Dog();
+        Pet p2 = new Cat();
+
+        p1.play();
+        p2.play();
+    }
+}

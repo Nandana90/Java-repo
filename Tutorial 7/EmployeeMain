@@ -1,20 +1,30 @@
 import java.util.Scanner;
 
 class Employee {
-    int empId;
-    String empName;
-    double salary;
+    String name;
+    String address;
+    int age;
+    int mob;
+    float sal;
 
-    Employee(int empId, String empName, double salary) {
-        this.empId = empId;
-        this.empName = empName;
-        this.salary = salary;
+    void print_Salary() {
+        System.out.println("Salary: " + sal);
     }
+}
 
-    void displayEmployee() {
-        System.out.println("Employee ID: " + empId);
-        System.out.println("Employee Name: " + empName);
-        System.out.println("Salary: " + salary);
+class Officer extends Employee {
+    String spl;
+
+    void print_Specialization() {
+        System.out.println("Specialization: " + spl);
+    }
+}
+
+class Manager extends Employee {
+    String dep;
+
+    void print_Dept() {
+        System.out.println("Department: " + dep);
     }
 }
 
@@ -22,34 +32,62 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter Employee 1 ID: ");
-        int id1 = sc.nextInt();
+        Officer o = new Officer();
+
+        System.out.print("Enter Officer's Name: ");
+        o.name = sc.nextLine();
+
+        System.out.print("Enter Address: ");
+        o.address = sc.nextLine();
+
+        System.out.print("Enter Age: ");
+        o.age = sc.nextInt();
+
+        System.out.print("Enter Mobile: ");
+        o.mob = sc.nextInt();
+
+        System.out.print("Enter Salary: ");
+        o.sal = sc.nextFloat();
         sc.nextLine();
 
-        System.out.print("Enter Employee 1 Name: ");
-        String name1 = sc.nextLine();
+        System.out.print("Enter Specialization: ");
+        o.spl = sc.nextLine();
 
-        System.out.print("Enter Employee 1 Salary: ");
-        double salary1 = sc.nextDouble();
+        Manager m = new Manager();
 
-        Employee e1 = new Employee(id1, name1, salary1);
+        System.out.print("\nEnter Manager's Name: ");
+        m.name = sc.nextLine();
 
-        System.out.print("Enter Employee 2 ID: ");
-        int id2 = sc.nextInt();
+        System.out.print("Enter Address: ");
+        m.address = sc.nextLine();
+
+        System.out.print("Enter Age: ");
+        m.age = sc.nextInt();
+
+        System.out.print("Enter Mobile: ");
+        m.mob = sc.nextInt();
+
+        System.out.print("Enter Salary: ");
+        m.sal = sc.nextFloat();
         sc.nextLine();
 
-        System.out.print("Enter Employee 2 Name: ");
-        String name2 = sc.nextLine();
+        System.out.print("Enter Department: ");
+        m.dep = sc.nextLine();
 
-        System.out.print("Enter Employee 2 Salary: ");
-        double salary2 = sc.nextDouble();
+        System.out.println("\n--- Officer Details ---");
+        System.out.println("Name: " + o.name);
+        System.out.println("Address: " + o.address);
+        System.out.println("Age: " + o.age);
+        System.out.println("Mobile: " + o.mob);
+        o.print_Salary();
+        o.print_Specialization();
 
-        Employee e2 = new Employee(id2, name2, salary2);
-
-        System.out.println("\nEmployee 1 Details");
-        e1.displayEmployee();
-
-        System.out.println("\nEmployee 2 Details");
-        e2.displayEmployee();
+        System.out.println("\n--- Manager Details ---");
+        System.out.println("Name: " + m.name);
+        System.out.println("Address: " + m.address);
+        System.out.println("Age: " + m.age);
+        System.out.println("Mobile: " + m.mob);
+        m.print_Salary();
+        m.print_Dept();
     }
 }
