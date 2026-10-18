@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+class InvalidNumberException extends Exception {
+    InvalidNumberException(String msg) {
+        super(msg);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter N: ");
+            int n = sc.nextInt();
+
+            int sum = 0;
+
+            for (int i = 1; i <= n; i++) {
+                System.out.print("Enter number: ");
+                int num = sc.nextInt();
+
+                if (num <= 0)
+                    throw new InvalidNumberException(
+                        "Number must be positive");
+
+                sum += num;
+            }
+
+            System.out.println("Sum = " + sum);
+            System.out.println("Average = " + (double) sum / n);
+        }
+        catch (InvalidNumberException e) {
+            System.out.println(e.getMessage());
+        }
+
+        sc.close();
+    }
+}
