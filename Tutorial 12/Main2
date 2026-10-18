@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+class InvalidReservationException extends Exception {
+    InvalidReservationException(String msg) {
+        super(msg);
+    }
+}
+
+class HotelRoom {
+    int availableSlots;
+
+    HotelRoom(int slots) {
+        availableSlots = slots;
+    }
+
+    void reserve(int slots) throws InvalidReservationException {
+        if (slots <= 0)
+            throw new InvalidReservationException(
+                "Invalid number of slots!");
+
+        availableSlots += slots;
+        System.out.println("Reservation successful");
+        System.out.println("Reserved slots: " + slots);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        HotelRoom h = new HotelRoom(0);
+
+        try {
+            System.out.print("Enter number of slots: ");
+            int n = sc.nextInt();
+
+            h.reserve(n);
+        }
+        catch (InvalidReservationException e) {
+            System.out.println(e.getMessage());
+        }
+
+        sc.close();
+    }
+}

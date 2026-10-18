@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+class InvalidScoreException extends RuntimeException {
+    InvalidScoreException(String msg) {
+        super(msg);
+    }
+}
+
+class Student {
+    int score;
+
+    void setScore(int score) {
+        if (score < 0 || score > 100)
+            throw new InvalidScoreException(
+                "Score must be between 0 and 100");
+
+        this.score = score;
+    }
+
+    void display() {
+        System.out.println("Score = " + score);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Student s = new Student();
+
+        try {
+            System.out.print("Enter score: ");
+            int score = sc.nextInt();
+
+            s.setScore(score);
+            s.display();
+        }
+        catch (InvalidScoreException e) {
+            System.out.println(e.getMessage());
+        }
+
+        sc.close();
+    }
+}
